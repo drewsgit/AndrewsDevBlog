@@ -1,0 +1,129 @@
+<app-navbar [bg]="true" />
+
+<!-- Banner Start -->
+<section class="bg-half-50 d-table w-100" style="background: url('assets/images/banner.jpg') top;">
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <div class="row align-items-center mt-5">
+            <div class="col-md-6">
+                <div class="blog blog-primary me-lg-5">
+
+                    <a [routerLink]="['/business-blog-detail']" class="text-white h3 d-block title mt-4">Welcome to
+                        my
+                        blog!</a>
+
+                    <p class="text-white-50 mt-3">This is place where you can learn a little about me, updates made
+                        to
+                        site, and what I'm learning.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+                <div class="text-white h3">Recent Posts</div>
+                <div *ngFor="let item of blogData | slice:0:3" class="d-flex align-items-center mt-4">
+                    <img [src]="item.image" class="img-fluid rounded-pill shadow-md avatar avatar-medium" alt="">
+                    <div class="blog blog-primary overflow-hidden ps-3">
+                        <a [routerLink]="['/blog-detail', item.id]"
+                            class="text-white h5 title d-block mb-2">{{item.title}}</a>
+
+                        <span class="text-muted d-block">{{item.date}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner End -->
+
+<!-- Start Post -->
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title mb-4">
+                    <h4 class="title mb-3">Posts</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-6">
+                <div class="row">
+                    <div *ngFor="let item of blogData" class="col-12 mt-2 mb-4">
+                        <div class="card blog blog-primary border-0">
+                            <div class="row align-items-center">
+
+                                <div class="col-lg-12 mt-4 mt-lg-0">
+                                    <div class="text-muted"><i class="uil uil-calendar-alt text-dark"></i>
+                                        {{item.date}}</div>
+
+                                    <div class="text-dark h5 title d-block h5-no-margin-bottom">{{item.title}}</div>
+
+                                    <div *ngIf="item.subTitle && item.subTitle !== ''">{{item.subTitle}}</div>
+
+                                    <a [routerLink]="['/blog-detail', item.id]" class="read-more d-block">Read
+                                        More <i class="uil uil-arrow-right align-middle"></i></a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Pagination -->
+                <!-- <div class="row">
+                    <div class="col-12 mt-4 pt-2">
+                        <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item">
+                                <a class="page-link" href="#" (click)="$event.preventDefault()" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="mdi mdi-chevron-left mdi-18px"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#" (click)="$event.preventDefault()">1</a>
+                            </li>
+                            <li class="page-item"><a class="page-link active" href="#"
+                                    (click)="$event.preventDefault()">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#" (click)="$event.preventDefault()">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" (click)="$event.preventDefault()" aria-label="Next">
+                                    <span aria-hidden="true"><i class="mdi mdi-chevron-right mdi-18px"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> -->
+                <!-- End Pagination -->
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<!-- End Post -->
+
+<!-- Start Subscription -->
+<!-- <section class="bg-light pt-4 pb-4 mt-6">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h3>Subscribe our blog</h3>
+                    <p class="text-muted para-desc mx-auto mb-0">You will get notified when I add a post.</p>
+
+                    <div class="subcribe-form mt-2">
+                        <form class="m-0 mx-auto" style="max-width: 550px;">
+                            <input type="email" id="email" name="email" class="rounded-lg"
+                                placeholder="Enter your email">
+                            <button type="submit" class="btn btn-pills btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- End Subscription-->

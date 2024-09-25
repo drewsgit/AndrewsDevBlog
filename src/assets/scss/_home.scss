@@ -1,0 +1,122 @@
+//
+// _home.scss
+//
+
+@mixin home-common {
+    background-size: cover;
+    align-self: center;
+    position: relative;
+    background-position: center center;
+}
+
+.bg-home {
+    height: 100vh;
+    @include home-common();
+}
+
+.bg-home-75vh {
+    height: 75vh !important;
+    @include home-common();
+
+    @media (max-width: 767px) {
+        height: 80vh !important;
+    }
+}
+
+.bg-half-260 {
+    padding: 260px 0;
+    @include home-common();
+}
+
+.bg-half-170 {
+    padding: 170px 0;
+    @include home-common();
+}
+
+.bg-half-100 {
+    padding: 100px 0;
+    @include home-common();
+}
+
+.bg-half-50 {
+    padding: 50px 0;
+    @include home-common();
+}
+
+.bg-half {
+    padding: 174px 0 100px;
+    @include home-common();
+
+    @media (max-width: 767px) {
+        padding: 124px 0 60px;
+    }
+}
+
+.bg-half-74 {
+    padding-top: 74px;
+    @include home-common();
+}
+
+.bg-auth-home {
+    padding: 142px 0;
+    @include home-common();
+}
+
+.attach-icons-hero {
+    position: absolute;
+    right: 0;
+    top: -45px;
+    left: 0;
+    z-index: 1;
+
+    @media (max-width: 767px) {
+        top: -30px;
+
+        .avatar {
+            &.avatar-md-md {
+                height: 55px;
+                width: 55px;
+            }
+        }
+    }
+}
+
+.magazine-hero {
+    margin-top: 185px;
+
+    @media (max-width: 991px) {
+        margin-top: 0;
+        padding-top: 122px;
+    }
+
+    @media (max-width: 576px) {
+        padding-top: 74px;
+    }
+}
+
+.demos-box {
+    position: relative;
+    z-index: 1;
+    transition: all 0.5s ease;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: $shadow-md !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .bg-home,
+    .bg-half-170,
+    .bg-half-260,
+    .bg-marketing,
+    .swiper-slider-hero .swiper-container .swiper-slide {
+        padding: 150px 0;
+        height: auto;
+    }
+}
+
+.h5-no-margin-bottom {
+    margin-bottom: 0px;
+}

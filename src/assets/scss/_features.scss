@@ -1,0 +1,40 @@
+//
+// _features.scss
+//
+
+.features {
+    @each $name,
+    $value in $colors {
+        &.feature-#{$name} {
+            .icon {
+                background: linear-gradient(45deg, transparent, rgba($value, 0.15));
+                color: $value;
+            }
+
+            .title {
+                &:hover {
+                    color: $value !important;
+                }
+            }
+
+            .link {
+                color: $value !important;
+            }
+        }
+    }
+}
+
+.features {
+    transition: all 0.5s ease;
+    .icon {
+        height: 48px;
+        width: 48px;
+        font-size: 24px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &:hover {
+        box-shadow: $shadow-md !important;
+    }
+}

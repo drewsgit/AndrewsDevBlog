@@ -1,0 +1,47 @@
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-py-60">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <a href="#" (click)="$event.preventDefault()" class="logo-footer">
+                                    <img [src]="'assets/images/logo-light.png'" height="22" alt="">
+                                </a>
+
+                                <p class="mt-4 para-desc mx-auto">Our design projects are fresh and simple and will
+                                    benefit your business greatly. Learn more about our work!</p>
+                                <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
+                                    <li *ngFor="let item of social" class="list-inline-item m-x-2"><a href="#"
+                                            (click)="$event.preventDefault()" class="rounded"><i
+                                                [ngClass]="item"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="py-4 footer-border">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <p class="mb-0">© {{date}} Getblog. Design & Develop with <i
+                                        class="mdi mdi-heart text-danger"></i> by <a href="https://shreethemes.in/"
+                                        target="_blank" class="text-reset">Shreethemes</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer><!--end footer-->
+<!-- Footer End -->

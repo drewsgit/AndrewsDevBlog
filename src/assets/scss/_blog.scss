@@ -1,0 +1,286 @@
+//
+// _blog.scss
+//
+.blog {
+    @each $name,
+    $value in $colors {
+        &.blog-#{$name} {
+            .bg-soft {
+                background-color: rgba($value, 0.1) !important;
+                border: 1px solid rgba($value, 0.1) !important;
+                color: #{$value} !important;
+            }
+            .bg {
+                background-color: #{$value} !important;
+            }
+            .title,
+            .author {
+                &:hover {
+                    color: $value !important;
+                }
+            }
+            .read-more {
+                color: $value !important;
+            }
+            .btn {
+                background-color: #{$value} !important;
+                border: 1px solid #{$value} !important;
+                color: $white !important;
+                box-shadow: 0 3px 5px 0 rgba($value, 0.3);
+                &:hover, &:focus, &:active, &.active, &.focus{
+                    background-color: darken($value, 10%) !important;
+                    border-color: darken($value, 10%) !important;
+                    color: $white !important;
+                }
+            }
+        }
+    }
+}
+
+.blog {
+    &.blog-type-two,
+    &.blog-type-three {
+        .blog-image {
+            img {
+                transition: all 0.5s ease;
+            }
+            .img-overlay {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                opacity: 0;
+                transition: all 0.5s ease;
+            }
+        }
+        .content {
+            transition: all 0.5s ease;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+        
+        &:hover {
+            .blog-image {
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    &.blog-type-two {
+        .blog-image {
+            .img-overlay {
+                background: $card-overlay;
+            }
+        }
+        .content {
+            bottom: -250px;
+        }
+        
+        &:hover {
+            .blog-image {
+                .img-overlay {
+                    opacity: 1;
+                }
+            }
+            .content {
+                bottom: 0;
+            }
+        }
+    }
+
+    &.blog-type-three {
+        .blog-image {
+            .img-overlay {
+                background: $overlay;
+            }
+        }
+        .content {
+            bottom: 0;
+            opacity: 0;
+        }
+        
+        &:hover {
+            .blog-image {
+                .img-overlay {
+                    opacity: 0.7;
+                }
+            }
+            .content {
+                opacity: 1;
+            }
+        }
+    }
+    
+    .likes {
+        -webkit-text-stroke: 1px $muted;
+        -webkit-text-fill-color: transparent;
+        &:hover, 
+        &:focus {
+            -webkit-text-stroke: $danger;
+            -webkit-text-fill-color: $danger;
+        }
+    }
+    .content-middle {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+    }
+
+    &.video-post {
+        line-height: 0;
+        iframe {
+            width: 100%;
+        }
+    }
+}
+
+
+//sidebar
+.tagcloud {
+    > a {
+        background: $gray-200;
+        color: $dark;
+        display: inline-block;
+        font-size: 9px;
+        letter-spacing: 1px;
+        margin: 5px 10px 5px 0;
+        padding: 8px 12px 7px;
+        text-transform: uppercase;
+        transition: all 0.5s ease;
+        font-weight: 600;
+        &:hover {
+            background: $primary;
+            color: $white !important;
+        }
+    }
+}
+
+.widget {
+    .widget-search {
+        form {
+            position: relative;
+        }
+    }
+    .widget-post-title {
+        &:hover {
+            color: $primary !important;
+        }
+    }
+    .widget-search, .searchform { 
+        input[type="text"] {
+            box-shadow: none;
+            padding: 12px 15px;
+            height: 45px;
+            font-size: 14px;
+            display: block;
+            width: 100%;
+            outline: none !important;
+            padding-right: 45px;
+        }
+        input[type="submit"] {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            opacity: 0;
+            width: 40px;
+            height: 40px;
+        }
+    }
+    .widget-search {
+        .searchform:after {
+            content: "\F0349";
+            position: absolute;
+            font-family: "Material Design Icons";
+            right: 16px;
+            top: 15px;
+            font-size: 20px;
+            line-height: 20px;
+            pointer-events: none;
+        }
+    }
+}
+
+
+//Insta post
+.insta-post {
+    @each $name,
+    $value in $colors {
+        &.insta-#{$name} {
+            .title,
+            .lightbox-icon a {
+                &:hover {
+                    color: $value !important;
+                }
+            }
+
+            .btn-icon {
+                background-color: $value !important;
+            }
+        }
+    }
+}
+
+.insta-post {
+    transition: all 0.5s ease;
+    .pop-icon {
+        position: absolute;
+        top: 70%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        text-align: center;
+        transition: all 0.5s ease;
+        opacity: 0;
+        .btn-icon {
+            color: $white;
+        }
+    }
+    &:hover {
+        .pop-icon {
+            top: 50%;
+            opacity: 1;
+        }
+    }
+}
+
+//Tobii Lighbox
+.tobii__btn svg {
+    height: 30px;
+    width: auto;
+}
+.tobii__counter {
+    font-size: 16px;
+}
+.tobii-zoom {
+    display: block !important;
+}
+
+.tobii-zoom__icon {
+    display: none;
+}
+
+#grid {
+    padding: 0 !important;
+}
+
+//spacing
+.spacing {
+    padding: 7px;
+}
+
+.play-icon {
+    text-align: center;
+    i {
+        height: 64px;
+        width: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

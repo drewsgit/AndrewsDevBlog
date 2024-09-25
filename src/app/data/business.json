@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "title": "Created blog foundation built in Angular 18",
+        "subTitle": "It's about time!",
+        "body": "<p>Finally had time to focus on building the blog.</p> <p>I'm really excited to have <b>blog</b> where I can show what I'm learning. </p>",
+        "tag": "Site",
+        "date": "Sept 24 2024",
+        "image": "assets/images/blog-entry.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Added about me page",
+        "subtitle": "",
+        "body": "Finally had time to focus on building the blog.  I'm really excited to have blog where I can show what I'm learning.",
+        "tag": "Site",
+        "date": "Sept 24 2024",
+        "image": "assets/images/blog-entry.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Uploaded to Vercel for public viewing",
+        "subtitle": "If the distribution of letters and 'words' is random, the reader will not be distracted from making a neutral judgement on the visual impact and readability of the typefaces (typography), or the distribution of text on the page (layout or type area).",
+        "tag": "Site",
+        "date": "Sept 24 2024",
+        "image": "assets/images/blog-entry.jpg"
+    },
+    {
+        "id": 4,
+        "title": "test4",
+        "subtitle": "If the distribution of letters and 'words' is random, the reader will not be distracted from making a neutral judgement on the visual impact and readability of the typefaces (typography), or the distribution of text on the page (layout or type area).",
+        "tag": "Site",
+        "date": "Sept 24 2024",
+        "image": "assets/images/blog-entry.jpg"
+    }
+]

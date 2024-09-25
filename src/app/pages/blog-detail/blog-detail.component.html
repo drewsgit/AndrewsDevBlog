@@ -5,11 +5,11 @@
             <div class="col-lg-9">
                 <div class="title-heading">
                     <li class="list-inline-item text-muted"><i class="uil uil-calender text-dark h5"></i>
-                        {{data?.date || ''}}</li>
+                        {{data?.date_created | date:'shortDate' || ''}}</li>
 
                     <h4 class="heading page-heading text-decoration-underline mb-0">{{data?.title || ''}}</h4>
 
-                    <div class="text-muted h5 fw-normal mb-0">{{data?.subTitle || ''}}</div>
+                    <div class="text-muted h5 fw-normal mb-0">{{data?.subtitle || ''}}</div>
 
                     <div class="text-muted h5 fw-normal mb-0 mt-4" [innerHTML]="data?.body || ''"></div>
                 </div>

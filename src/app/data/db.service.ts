@@ -28,4 +28,9 @@ export class DbService {
     return this.http
       .get<IPost[]>(`${this.baseURL}/posts`)
   }
+
+  getPostByID(id: number): Observable<IPost[]> {
+    return this.http
+      .get<IPost[]>(`${this.baseURL}/posts/${id}`)
+  }
 }

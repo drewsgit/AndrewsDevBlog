@@ -1,0 +1,26 @@
+<section class="bg-half-170 d-table w-100 pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <form [formGroup]="forms">
+                    <p>fName: <input type="text" formControlName="fName" /></p>
+                    <p *ngIf="!forms.get('fName').valid && (forms.get('fName').touched && forms.get('fName').dirty)">
+                        First name required
+                    </p>
+                    <p>Gender: <select formControlName="gender">
+                            <option value=""></option>
+                            <option value="option1">Option 1</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                    </p>
+                    <p *ngIf="!forms.get('gender').valid && (forms.get('gender').touched && forms.get('gender').dirty)">
+                        Gender required
+                    </p>
+                    <p><button (click)="submit()" [disabled]="!forms.valid">Submit</button></p>
+                    <p><button (click)="reset()">Reset</button></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,46 @@
+<section class="bg-half-170 d-table w-100 pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                Products
+                <ul>
+                    <li *ngFor="let t of signalItemList()">{{ t.name }} ${{ t.price }} <button class="btn btn-link"
+                            (click)="remove(t)">Remove</button></li>
+                </ul>
+                <p>Total: {{ totalPrice() }} <button (click)="reset()" class="btn btn-link">Reset</button></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                Loading spinner
+                <div>
+                    @if (signalIsLoading()) { ...Spinner active } @else { ...Spinner not active }
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                My Name
+                <div>
+                    {{ fullName() }}
+                </div>
+                <div>
+                    {{ fullName2 }}
+                </div>
+                <div><button (click)="updateName()" class="btn btn-link">Update Name</button></div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div><button (click)="updateTodos()" class="btn btn-link">Update Todos</button></div>
+            </div>
+        </div>
+    </div>
+</section>

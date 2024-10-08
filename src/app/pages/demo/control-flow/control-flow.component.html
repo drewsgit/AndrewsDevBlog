@@ -1,0 +1,29 @@
+<section class="bg-half-170 d-table w-100 pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <p>I wanted to play around with control flow since this is fairly new and very useful. I hated the old
+                    syntax ngIf and ngSwitch.</p>
+
+                <p>
+                    <button (click)="test1()" class="mr-4">Show using control flow 1</button>
+                    <button (click)="test2()" class="mr-2">Show using control flow 2</button>
+                    <button (click)="reset()">Reset</button>
+                </p>
+                <p>
+                    @if(showText1) {
+                <div>Showing Text 1</div>
+                } @else if (showText2) {
+                <div>Showing Text 2</div>
+                } @else {
+                <div>Default Text</div>
+                }
+                </p>
+
+                <pre>
+                <code [innerHTML]="code"></code>
+                </pre>
+            </div>
+        </div>
+    </div>
+</section>

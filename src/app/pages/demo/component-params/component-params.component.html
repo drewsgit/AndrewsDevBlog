@@ -1,0 +1,15 @@
+<section class="bg-half-170 d-table w-100 pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <p>Fields from Parent Component</p>
+                <p><input type="text" [(ngModel)]="name" placeholder="Enter name" /></p>
+                <p><button (click)="getValueFromService()">getValueFromService</button></p>
+
+
+                <app-component-params-child [fName]="name" (emitLastName)="updateFromChildControl($event)">
+                </app-component-params-child>
+            </div>
+        </div>
+    </div>
+</section>

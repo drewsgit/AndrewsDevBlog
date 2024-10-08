@@ -1,0 +1,26 @@
+<section class="bg-half-170 d-table w-100 pb-0">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <form #myForm="ngForm" (ngSubmit)="submit(myForm)">
+                    <p><input type="text" placeholder="fName" [(ngModel)]="fName" name="fName" required minlength="2"
+                            #fName1="ngModel" />
+                    </p>
+                    <p *ngIf="fName1.invalid && (fName1.dirty && fName1.touched)">fName required</p>
+                    <p>
+                        <select #gender1="ngModel" [(ngModel)]="gender" name="gender" required>
+                            <option value=""></option>
+                            <option value="option1">option1</option>
+                            <option value="'option2'">option2</option>
+                            <option value="'option3'">option3</option>
+                        </select>
+                    </p>
+                    <p *ngIf="gender1.invalid && (gender1.touched && gender1.dirty)">Gender required</p>
+                    <p>
+                        <button type="submit">Submit</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

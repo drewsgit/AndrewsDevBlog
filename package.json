@@ -23,6 +23,7 @@
     "lightgallery": "^2.7.2",
     "ngx-countup": "^13.2.0",
     "ngx-masonry": "^14.0.1",
+    "primeng": "^17.18.11",
     "rxjs": "~7.8.0",
     "tiny-slider": "^2.9.4",
     "tslib": "^2.3.0",

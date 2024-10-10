@@ -2,11 +2,12 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { DbService, IPost } from "../../data/db.service";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
 
 @Component({
   selector: "app-index",
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ProgressSpinnerModule],
   templateUrl: "./index.component.html",
   styleUrl: "./index.component.scss",
 })

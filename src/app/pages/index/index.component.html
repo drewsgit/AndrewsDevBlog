@@ -1,78 +1,107 @@
 <!-- Banner Start -->
-<section class="bg-half-50 d-table w-100" style="background: url('assets/images/banner.jpg') top;">
-    <div class="bg-overlay"></div>
-    <div class="container">
-        <div class="row align-items-center mt-5">
-            <div class="col-md-6">
-                <div class="blog blog-primary me-lg-5">
+<section
+  class="bg-half-50 d-table w-100"
+  style="background: url('assets/images/banner.jpg') top"
+>
+  <div class="bg-overlay"></div>
+  <div class="container">
+    <div class="row align-items-center mt-5">
+      <div class="col-md-6">
+        <div class="blog blog-primary me-lg-5">
+          <a
+            [routerLink]="['/business-blog-detail']"
+            class="text-white h3 d-block title mt-4"
+            >Welcome to my blog!</a
+          >
 
-                    <a [routerLink]="['/business-blog-detail']" class="text-white h3 d-block title mt-4">Welcome to
-                        my
-                        blog!</a>
-
-                    <p class="text-white-50 mt-3">This is place where you can learn a little about me, updates made
-                        to
-                        site, and what I'm learning.
-                    </p>
-
-                </div>
-            </div>
-
-            <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                <div class="text-white h3">Recent Posts</div>
-                <div *ngFor="let item of blogData | slice:0:3" class="d-flex align-items-center mt-4">
-                    <img [src]="item.image" class="img-fluid rounded-pill shadow-md avatar avatar-medium" alt="">
-                    <div class="blog blog-primary overflow-hidden ps-3">
-                        <a [routerLink]="['/blog-detail', item.id]"
-                            class="text-white h5 title d-block mb-2">{{item.title}}</a>
-
-                        <span class="text-muted d-block">{{item.date_created | date:'shortDate'}}</span>
-                    </div>
-                </div>
-            </div>
+          <p class="text-white-50 mt-3">
+            This is place where you can learn a little about me, updates made to
+            site, and what I'm learning.
+          </p>
         </div>
+      </div>
+
+      <div class="col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
+        <div class="text-white h3">Recent Posts</div>
+        @defer (when blogData.length > 0) {
+        <div
+          *ngFor="let item of blogData | slice : 0 : 3"
+          class="d-flex align-items-center mt-4"
+        >
+          <img
+            [src]="item.image"
+            class="img-fluid rounded-pill shadow-md avatar avatar-medium"
+            alt=""
+          />
+          <div class="blog blog-primary overflow-hidden ps-3">
+            <a
+              [routerLink]="['/blog-detail', item.id]"
+              class="text-white h5 title d-block mb-2"
+              >{{ item.title }}</a
+            >
+
+            <span class="text-muted d-block">{{
+              item.date_created | date : "shortDate"
+            }}</span>
+          </div>
+        </div>
+        } @placeholder {
+        <mat-spinner strokeWidth="3" diameter="50"></mat-spinner>
+        }
+      </div>
     </div>
+  </div>
 </section>
 <!-- Banner End -->
 
 <!-- Start Post -->
 <section>
-    <div class="container mt-4">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title mb-4">
+          <h4 class="title mb-3">Posts</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 col-md-6">
         <div class="row">
-            <div class="col-12">
-                <div class="section-title mb-4">
-                    <h4 class="title mb-3">Posts</h4>
+          @defer (when blogData.length > 0) {
+          <div *ngFor="let item of blogData" class="col-12 mt-2 mb-4">
+            <div class="card blog blog-primary border-0">
+              <div class="row align-items-center">
+                <div class="col-lg-12 mt-4 mt-lg-0">
+                  <div class="text-muted">
+                    <i class="uil uil-calendar-alt text-dark"></i>
+                    {{ item.date_created | date : "shortDate" }}
+                  </div>
+
+                  <div class="text-dark h5 title d-block h5-no-margin-bottom">
+                    {{ item.title }}
+                  </div>
+
+                  <div *ngIf="item.subtitle && item.subtitle !== ''">
+                    {{ item.subtitle }}
+                  </div>
+
+                  <a
+                    [routerLink]="['/blog-detail', item.id]"
+                    class="read-more d-block"
+                    >Read More <i class="uil uil-arrow-right align-middle"></i
+                  ></a>
                 </div>
+              </div>
             </div>
+          </div>
+          } @placeholder {
+          <mat-spinner strokeWidth="3" diameter="50"></mat-spinner>
+          }
         </div>
 
-        <div class="row">
-            <div class="col-lg-12 col-md-6">
-                <div class="row">
-                    <div *ngFor="let item of blogData" class="col-12 mt-2 mb-4">
-                        <div class="card blog blog-primary border-0">
-                            <div class="row align-items-center">
-
-                                <div class="col-lg-12 mt-4 mt-lg-0">
-                                    <div class="text-muted"><i class="uil uil-calendar-alt text-dark"></i>
-                                        {{item.date_created | date:'shortDate'}}</div>
-
-                                    <div class="text-dark h5 title d-block h5-no-margin-bottom">{{item.title}}</div>
-
-                                    <div *ngIf="item.subtitle && item.subtitle !== ''">{{item.subtitle}}</div>
-
-                                    <a [routerLink]="['/blog-detail', item.id]" class="read-more d-block">Read
-                                        More <i class="uil uil-arrow-right align-middle"></i></a>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Start Pagination -->
-                <!-- <div class="row">
+        <!-- Start Pagination -->
+        <!-- <div class="row">
                     <div class="col-12 mt-4 pt-2">
                         <ul class="pagination justify-content-center mb-0">
                             <li class="page-item">
@@ -94,12 +123,10 @@
                         </ul>
                     </div>
                 </div> -->
-                <!-- End Pagination -->
-            </div>
-
-        </div>
+        <!-- End Pagination -->
+      </div>
     </div>
-
+  </div>
 </section>
 <!-- End Post -->
 

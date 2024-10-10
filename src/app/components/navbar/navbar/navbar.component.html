@@ -46,10 +46,10 @@
         <div id="navigation" [ngClass]="open ? 'd-block' : 'd-none'">
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-left">
-                <li [ngClass]="current === '/index-business' ? 'active' : ''"><a [routerLink]="'/'"
-                        class="sub-menu-item" [ngClass]="current === '/index-business' ? 'active' : ''">Home</a></li>
+                <li [ngClass]="current === '/' ? 'active' : ''"><a [routerLink]="'/'"
+                        class="sub-menu-item" [ngClass]="current === '/' ? 'active' : ''">Home</a></li>
 
-                <li [ngClass]="current === '/business-aboutus' ? 'active' : ''"><a [routerLink]="'/about-me'"
+                <li [ngClass]="current === '/about-me' ? 'active' : ''"><a [routerLink]="'/about-me'"
                         class="sub-menu-item">About Me</a></li>
 
                 <!-- <li [ngClass]="current === '/business-contact' ? 'active' : ''"><a [routerLink]="'/business-contact'"

@@ -26,7 +26,15 @@ export const routes: Routes = [
   {
     path: "about-me",
     component: ExternalLayoutComponent,
-    children: [{ path: "", component: AboutMeComponent }],
+    children: [
+      {
+        path: "",
+        loadComponent: () =>
+          import("./pages/about-me/about-me.component").then(
+            (m) => m.AboutMeComponent
+          ),
+      },
+    ],
   },
   {
     path: "",

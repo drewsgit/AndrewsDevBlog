@@ -33,7 +33,6 @@ export const routes: Routes = [
   {
     path: "about-me",
     component: ExternalLayoutComponent,
-    canActivate: [AdminGuard],
     children: [
       {
         path: "",

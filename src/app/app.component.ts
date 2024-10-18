@@ -12,5 +12,5 @@ import { ScrollToTopComponent } from "./components/scroll-to-top/scroll-to-top.c
   styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  title = "getblog";
+  title = "Andrew Dev Blog";
 }

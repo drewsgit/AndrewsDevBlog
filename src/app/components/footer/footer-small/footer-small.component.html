@@ -1,21 +1,30 @@
 <!-- Footer Start -->
 <footer class="footer bg-footer py-4">
-    <div class="container text-center">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-sm-8">
-                <div class="text-sm-start">
-                    <p class="mb-0">© {{date}} Getblog. Design & Develop with <i class="mdi mdi-heart text-danger"></i>
-                        by <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.</p>
-                </div>
-            </div>
-
-            <div class="col-sm-4 mt-4 mt-sm-0">
-                <ul class="list-unstyled social-icon text-sm-end social mb-0">
-                    <li *ngFor="let item of social" class="list-inline-item m-x-2"><a [href]="item.link" target="_blank"
-                            class="rounded"><i [ngClass]="item.icon" title="dribbble"></i></a></li>
-                </ul>
-            </div>
+  <div class="container text-center">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-sm-8">
+        <div class="text-sm-start">
+          <p class="mb-0">
+            © {{ date }} andrewdevblog. Design & Develop with
+            <i class="mdi mdi-heart text-danger"></i> by
+            <a href="https://shreethemes.in/" target="_blank" class="text-reset"
+              >Shreethemes</a
+            >.
+          </p>
         </div>
+      </div>
+
+      <div class="col-sm-4 mt-4 mt-sm-0">
+        <ul class="list-unstyled social-icon text-sm-end social mb-0">
+          <li *ngFor="let item of social" class="list-inline-item m-x-2">
+            <a [href]="item.link" target="_blank" class="rounded"
+              ><i [ngClass]="item.icon" title="dribbble"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
     </div>
-</footer><!--end footer-->
+  </div>
+</footer>
+<!--end footer-->
 <!-- End -->

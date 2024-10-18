@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "getblog": {
+    "andrewdevblog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/getblog",
+            "outputPath": "dist/andrewdevblog",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "getblog:build:production"
+              "buildTarget": "andrewdevblog:build:production"
             },
             "development": {
-              "buildTarget": "getblog:build:development"
+              "buildTarget": "andrewdevblog:build:development"
             }
           },
           "defaultConfiguration": "development"

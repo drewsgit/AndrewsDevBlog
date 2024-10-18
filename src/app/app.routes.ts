@@ -11,8 +11,15 @@ import { TemplateComponent } from "./pages/demo/template/template.component";
 import { ReactiveComponent } from "./pages/demo/reactive/reactive.component";
 import { SignalComponent } from "./pages/demo/signal/signal.component";
 import { ExternalLayoutComponent } from "./components/layouts/external-layout/external-layout.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { AdminGuard } from "./components/guards/admin-guard.guard";
 
 export const routes: Routes = [
+  {
+    path: "login",
+    component: ExternalLayoutComponent,
+    children: [{ path: "", component: LoginComponent }],
+  },
   {
     path: "blog-detail",
     component: ExternalLayoutComponent,
@@ -26,6 +33,7 @@ export const routes: Routes = [
   {
     path: "about-me",
     component: ExternalLayoutComponent,
+    canActivate: [AdminGuard],
     children: [
       {
         path: "",

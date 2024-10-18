@@ -144,6 +144,25 @@
         }
     }
 
+    .login-button {
+        float: right;
+        line-height: 68px;
+
+        // padding-top: 3px;
+        // padding-bottom: 3px;
+        >li {
+            line-height: initial;
+        }
+
+        .nav-light-icon-dark {
+            display: none;
+        }
+
+        .nav-light-icon-white {
+            display: inline-block;
+        }
+    }
+
     //Buy button
     .buy-button {
         float: right;

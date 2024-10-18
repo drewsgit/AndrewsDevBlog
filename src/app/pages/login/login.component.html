@@ -1,0 +1,77 @@
+<section class="bg-half-170 bg-light d-table w-100">
+  <div class="container">
+    <div class="row mt-5 justify-content-center">
+      <div class="col-12">
+        <div class="title-heading text-center">
+          <small class="text-muted mb-1 fw-medium text-uppercase mx-auto"
+            >Login</small
+          >
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showLoginError" class="alert alert-danger" role="alert">
+      Invalid username or password. Please try again.
+    </div>
+    <form #myForm="ngForm">
+      <div class="center-login">
+        <div>
+          <!-- Username -->
+          <div class="row">
+            <div class="col-4">Username</div>
+            <div class="col-3">
+              <input
+                name="userName"
+                [(ngModel)]="userName"
+                #userName1="ngModel"
+                required
+              />
+            </div>
+          </div>
+          <div
+            class="row"
+            *ngIf="userName1.invalid && userName1.dirty && userName1.touched"
+          >
+            <div class="col-4"></div>
+            <div class="col text-danger">Username required</div>
+          </div>
+          <!-- Password -->
+          <div class="row">
+            <div class="col-4">Password</div>
+            <div class="col-3">
+              <input
+                name="password"
+                [(ngModel)]="password"
+                #password1="ngModel"
+                required
+              />
+            </div>
+          </div>
+          <div
+            class="row"
+            *ngIf="password1.invalid && password1.dirty && password1.touched"
+          >
+            <div class="col-4"></div>
+            <div class="col text-danger">Password required</div>
+          </div>
+          <!-- Submit -->
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <button
+                type="button"
+                class="btn btn-primary mt-2"
+                (click)="login()"
+                [disabled]="myForm.invalid || inProgress"
+              >
+                Submit
+              </button>
+            </div>
+            <div *ngIf="inProgress" class="col-2 mt-3">
+              <mat-spinner strokeWidth="3" diameter="20"></mat-spinner>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

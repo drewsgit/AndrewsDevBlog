@@ -1,44 +1,27 @@
-<section class="bg-half-100 bg-light d-table w-100">
+<!-- Header -->
+<section class="bg-half-74 bg-light d-table w-100">
   <div class="container">
     <div class="row mt-5 justify-content-center">
       <div class="col-12">
         <div class="title-heading text-center">
-          <small class="text-muted mb-1 fw-medium text-uppercase mx-auto"
-            >Posts</small
-          >
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="title-heading">
-          <h5 class="heading mb-0 page-heading">
-            This is where you can manage posts.
-          </h5>
+          <h3>Posts</h3>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="position-relative">
-  <div class="shape overflow-hidden text-white">
-    <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z"
-        fill="currentColor"
-      ></path>
-    </svg>
-  </div>
-</div>
-
-<!-- Start -->
+<!-- Body -->
 <section class="mt-4">
   <div class="container">
     <div class="row align-items-center">
-      <h3 class="text-center">Posts</h3>
-
-      <button type="button" class="btn btn-link add-link">Add Post</button>
+      <button
+        type="button"
+        class="btn btn-link add-link"
+        [routerLink]="'/admin/add-edit-post'"
+      >
+        Add Post
+      </button>
       <div class="col-12">
         <p-table
           [value]="posts$"
@@ -76,4 +59,3 @@
     </div>
   </div>
 </section>
-<!-- End -->

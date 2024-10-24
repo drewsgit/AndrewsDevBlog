@@ -10,11 +10,12 @@ import { finalize, Observable, Subject, takeUntil } from "rxjs";
 import { TableModule } from "primeng/table";
 import { CommonModule } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: "app-post",
   standalone: true,
-  imports: [TableModule, CommonModule, MatProgressSpinnerModule],
+  imports: [TableModule, CommonModule, MatProgressSpinnerModule, RouterLink],
   templateUrl: "./post-table.component.html",
   styleUrl: "./post-table.component.scss",
   encapsulation: ViewEncapsulation.None,

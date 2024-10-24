@@ -50,7 +50,7 @@ export const routes: Routes = [
       {
         path: "posts",
         loadComponent: () =>
-          import("./pages/admin/post/post-table.component").then(
+          import("./pages/admin/post/post-table/post-table.component").then(
             (m) => m.PostTableComponent
           ),
       },

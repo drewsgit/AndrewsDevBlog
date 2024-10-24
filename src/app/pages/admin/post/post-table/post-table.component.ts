@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from "@angular/core";
-import { DbService, IPost } from "../../../data/db.service";
+import { DbService, IPost } from "../../../../data/db.service";
 import { finalize, Observable, Subject, takeUntil } from "rxjs";
 import { TableModule } from "primeng/table";
 import { CommonModule } from "@angular/common";

@@ -48,10 +48,10 @@ export const routes: Routes = [
     component: ExternalLayoutComponent,
     children: [
       {
-        path: "post",
+        path: "posts",
         loadComponent: () =>
-          import("./pages/admin/post/post.component").then(
-            (m) => m.PostComponent
+          import("./pages/admin/post/post-table.component").then(
+            (m) => m.PostTableComponent
           ),
       },
     ],

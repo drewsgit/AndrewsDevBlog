@@ -15,11 +15,11 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
   selector: "app-post",
   standalone: true,
   imports: [TableModule, CommonModule, MatProgressSpinnerModule],
-  templateUrl: "./post.component.html",
-  styleUrl: "./post.component.scss",
+  templateUrl: "./post-table.component.html",
+  styleUrl: "./post-table.component.scss",
   encapsulation: ViewEncapsulation.None,
 })
-export class PostComponent implements OnInit, OnDestroy {
+export class PostTableComponent implements OnInit, OnDestroy {
   dbService = inject(DbService);
   destroy$: Subject<boolean> = new Subject<boolean>();
   posts$: IPost[] = [];

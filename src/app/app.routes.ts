@@ -44,6 +44,19 @@ export const routes: Routes = [
     ],
   },
   {
+    path: "admin",
+    component: ExternalLayoutComponent,
+    children: [
+      {
+        path: "post",
+        loadComponent: () =>
+          import("./pages/admin/post/post.component").then(
+            (m) => m.PostComponent
+          ),
+      },
+    ],
+  },
+  {
     path: "",
     component: ExternalLayoutComponent,
     children: [{ path: "", component: IndexComponent }],

@@ -61,6 +61,10 @@
           <a [routerLink]="'/about-me'" class="sub-menu-item">About Me</a>
         </li>
 
+        <li [ngClass]="current === '/admin/post' ? 'active' : ''">
+          <a [routerLink]="'/admin/post'" class="sub-menu-item">Admin</a>
+        </li>
+
         <!-- <li [ngClass]="current === '/business-contact' ? 'active' : ''"><a [routerLink]="'/business-contact'"
                         class="sub-menu-item">Contact Me</a></li> -->
       </ul>

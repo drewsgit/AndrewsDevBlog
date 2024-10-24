@@ -54,6 +54,13 @@ export const routes: Routes = [
             (m) => m.PostTableComponent
           ),
       },
+      {
+        path: "add-edit-post",
+        loadComponent: () =>
+          import(
+            "./pages/admin/post/add-edit-post/add-edit-post.component"
+          ).then((m) => m.AddEditPostComponent),
+      },
     ],
   },
   {

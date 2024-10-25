@@ -11,6 +11,8 @@ import { TableModule } from "primeng/table";
 import { CommonModule } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { RouterLink } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { DeletePostConfirmComponent } from "./delete-post-confirm/delete-post-confirm.component";
 
 @Component({
   selector: "app-post",
@@ -22,6 +24,8 @@ import { RouterLink } from "@angular/router";
 })
 export class PostTableComponent implements OnInit, OnDestroy {
   dbService = inject(DbService);
+  modalService = inject(NgbModal);
+
   destroy$: Subject<boolean> = new Subject<boolean>();
   posts$: IPost[] = [];
   inProgress = false;
@@ -30,7 +34,22 @@ export class PostTableComponent implements OnInit, OnDestroy {
     this.loadTable();
   }
 
-  delete(id: number) {
+  deleteConfirm(post: IPost) {
+    const modalRef = this.modalService.open(DeletePostConfirmComponent);
+    modalRef.componentInstance.title = post.title;
+
+    modalRef.result.then(
+      (result) => {
+        console.log("result: ", result);
+        this.deletePost(post.id);
+      },
+      (reason) => {
+        console.log("reason: ", reason);
+      }
+    );
+  }
+
+  deletePost(id: number) {
     this.dbService
       .deletePost(id)
       .pipe(
@@ -38,8 +57,10 @@ export class PostTableComponent implements OnInit, OnDestroy {
         finalize(() => (this.inProgress = false))
       )
       .subscribe({
-        error: () => {},
-        next: (res) => {
+        error: (err) => {
+          console.log("Error: ", err);
+        },
+        next: () => {
           this.loadTable();
         },
       });
@@ -54,7 +75,9 @@ export class PostTableComponent implements OnInit, OnDestroy {
         finalize(() => (this.inProgress = false))
       )
       .subscribe({
-        error: () => {},
+        error: (err) => {
+          console.log("Error: ", err);
+        },
         next: (res) => {
           this.posts$ = res;
         },

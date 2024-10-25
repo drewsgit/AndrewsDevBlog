@@ -1,3 +1,13 @@
 .back-link {
     padding-left: 0px
 }
+
+.buttons {
+    display: flex; 
+    flex-direction: row; 
+    vertical-align: auto;
+}
+
+.spinner {
+    align-self: center;
+}

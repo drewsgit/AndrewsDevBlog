@@ -71,17 +71,18 @@
           <div class="row mt-2">
             <div class="col-6">
               <label class="form-label" for="body"> Body: </label>
-              <input
-                type="text"
+              <textarea
+                rows="5"
+                cols="40"
                 class="form-control"
                 formControlName="body"
                 id="body"
-              />
+              ></textarea>
             </div>
           </div>
 
           <!-- Buttons -->
-          <div class="mt-2">
+          <div class="mt-2 buttons">
             <button
               class="btn btn-primary"
               [disabled]="!forms.valid"
@@ -89,6 +90,9 @@
             >
               Submit
             </button>
+            <div *ngIf="inProgress" class="spinner">
+              <mat-spinner strokeWidth="3" diameter="20"></mat-spinner>
+            </div>
             <button
               class="btn btn-secondary ms-2"
               (click)="reset()"

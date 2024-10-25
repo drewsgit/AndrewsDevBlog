@@ -15,7 +15,7 @@ export interface ILogin {
 }
 
 export interface IPost {
-  id: number;
+  id?: number;
   title: string;
   subtitle: string;
   body: string;
@@ -40,6 +40,10 @@ export class DbService {
 
   getPostByID(id: number): Observable<IPost[]> {
     return this.http.get<IPost[]>(`${this.baseURL}/posts/${id}`);
+  }
+
+  addPost(payload: IPost) {
+    return this.http.post<IPost>(`${this.baseURL}/posts`, payload);
   }
 
   login(payload: ILogin): Observable<IUser> {

@@ -27,6 +27,25 @@ export class PostTableComponent implements OnInit, OnDestroy {
   inProgress = false;
 
   ngOnInit(): void {
+    this.loadTable();
+  }
+
+  delete(id: number) {
+    this.dbService
+      .deletePost(id)
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => (this.inProgress = false))
+      )
+      .subscribe({
+        error: () => {},
+        next: (res) => {
+          this.loadTable();
+        },
+      });
+  }
+
+  private loadTable() {
     this.inProgress = true;
     this.dbService
       .getPosts()

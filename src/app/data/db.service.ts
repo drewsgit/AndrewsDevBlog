@@ -34,6 +34,7 @@ export class DbService {
     console.log("BaseURL: ", this.baseURL);
   }
 
+  /* Start Post */
   getPosts(): Observable<IPost[]> {
     return this.http.get<IPost[]>(`${this.baseURL}/posts`);
   }
@@ -45,6 +46,11 @@ export class DbService {
   addPost(payload: IPost) {
     return this.http.post<IPost>(`${this.baseURL}/posts`, payload);
   }
+
+  deletePost(id: number) {
+    return this.http.delete<IPost>(`${this.baseURL}/posts/${id}`);
+  }
+  /* End Post */
 
   login(payload: ILogin): Observable<IUser> {
     return this.http.post<IUser>(`${this.baseURL}/login`, payload);

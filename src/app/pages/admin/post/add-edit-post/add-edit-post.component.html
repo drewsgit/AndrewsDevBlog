@@ -81,6 +81,21 @@
             </div>
           </div>
 
+          <!-- Tag -->
+          <div class="row mt-2">
+            <div class="col-6">
+              <label class="form-label" for="body"> Tag: </label>
+              <select class="form-control" formControlName="tag">
+                <option
+                  *ngFor="let option of tags$ | async"
+                  [value]="option.id"
+                >
+                  {{ option.tag }}
+                </option>
+              </select>
+            </div>
+          </div>
+
           <!-- Buttons -->
           <div class="mt-2 buttons">
             <button

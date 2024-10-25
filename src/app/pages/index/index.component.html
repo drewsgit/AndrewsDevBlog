@@ -82,9 +82,10 @@
                     {{ item.title }}
                   </div>
 
-                  <div *ngIf="item.subtitle && item.subtitle !== ''">
-                    {{ item.subtitle }}
-                  </div>
+                  <div
+                    *ngIf="item.subtitle && item.subtitle !== ''"
+                    [innerHTML]="item.subtitle"
+                  ></div>
 
                   <a
                     [routerLink]="['/blog-detail', item.id]"

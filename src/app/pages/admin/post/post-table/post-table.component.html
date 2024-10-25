@@ -36,8 +36,9 @@
               <th>Title</th>
               <th>Subtitle</th>
               <th>Body</th>
-              <th>Date created</th>
+              <th>Tag</th>
               <th>Img Path</th>
+              <th>Date created</th>
               <th></th>
             </tr>
           </ng-template>
@@ -47,8 +48,9 @@
               <td>{{ post.title }}</td>
               <td>{{ post.subtitle }}</td>
               <td>{{ post.body }}</td>
-              <td>{{ post.date_created | date : "medium" }}</td>
+              <td>{{ post.tag }}</td>
               <td>{{ post.image }}</td>
+              <td>{{ post.date_created | date : "shortDate" }}</td>
               <td style="display: inline">
                 <button type="button" class="btn btn-link">edit</button>
                 <button

@@ -24,6 +24,11 @@ export interface IPost {
   image: string;
 }
 
+export interface ITag {
+  id: number;
+  tag: string;
+}
+
 @Injectable({
   providedIn: "root",
 })
@@ -51,6 +56,10 @@ export class DbService {
     return this.http.delete<IPost>(`${this.baseURL}/posts/${id}`);
   }
   /* End Post */
+
+  getTags(): Observable<ITag[]> {
+    return this.http.get<ITag[]>(`${this.baseURL}/tags`);
+  }
 
   login(payload: ILogin): Observable<IUser> {
     return this.http.post<IUser>(`${this.baseURL}/login`, payload);

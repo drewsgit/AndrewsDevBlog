@@ -52,6 +52,10 @@ export class DbService {
     return this.http.post<IPost>(`${this.baseURL}/posts`, payload);
   }
 
+  updatePost(id: number, payload: IPost) {
+    return this.http.patch<IPost>(`${this.baseURL}/posts/${id}`, payload);
+  }
+
   deletePost(id: number) {
     return this.http.delete<IPost>(`${this.baseURL}/posts/${id}`);
   }

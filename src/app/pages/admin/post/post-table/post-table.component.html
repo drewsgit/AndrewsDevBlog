@@ -52,7 +52,13 @@
               <td>{{ post.image }}</td>
               <td>{{ post.date_created | date : "shortDate" }}</td>
               <td style="display: inline">
-                <button type="button" class="btn btn-link">edit</button>
+                <button
+                  type="button"
+                  class="btn btn-link"
+                  (click)="editPost(post)"
+                >
+                  edit
+                </button>
                 <button
                   type="button"
                   class="btn btn-link"

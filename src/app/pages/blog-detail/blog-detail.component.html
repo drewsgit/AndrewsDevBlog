@@ -1,21 +1,31 @@
 <!-- Start hero -->
 <section class="bg-half-170 d-table w-100 pb-0">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
-                <div class="title-heading">
-                    <li class="list-inline-item text-muted"><i class="uil uil-calender text-dark h5"></i>
-                        {{data?.date_created | date:'shortDate' || ''}}</li>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <div class="title-heading">
+          <li class="list-inline-item text-muted">
+            <i class="uil uil-calender text-dark h5"></i>
+            {{ data?.date_created | date : "shortDate" || "" }}
+          </li>
 
-                    <h4 class="heading page-heading text-decoration-underline mb-0">{{data?.title || ''}}</h4>
+          <h4 class="heading page-heading text-decoration-underline mb-0">
+            {{ data?.title || "" }}
+          </h4>
 
-                    <div class="text-muted h5 fw-normal mb-0">{{data?.subtitle || ''}}</div>
+          <div
+            class="text-muted h5 fw-normal mb-0"
+            [innerHTML]="data?.subtitle || ''"
+          ></div>
 
-                    <div class="text-muted h5 fw-normal mb-0 mt-4" [innerHTML]="data?.body || ''"></div>
-                </div>
-            </div>
+          <div
+            class="text-muted h5 fw-normal mb-0 mt-4"
+            [innerHTML]="data?.body || ''"
+          ></div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- End Description -->

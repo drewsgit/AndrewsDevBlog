@@ -2,7 +2,7 @@ import { CommonModule, DatePipe } from "@angular/common";
 import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
-import { DbService, ITag } from "../../../../data/db.service";
+import { DbService, IPost, ITag } from "../../../../data/db.service";
 import { finalize, Observable, Subject, takeUntil } from "rxjs";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
@@ -28,6 +28,8 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   inProgress = false;
   tags$: Observable<ITag[]>;
+  type: string;
+  id: number;
 
   forms = this.fb.group({
     title: ["", Validators.required],
@@ -37,13 +39,34 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit(): void {
-    const queryParams = this.route.snapshot.queryParams;
-    console.log(queryParams["type"]);
     this.tags$ = this.dbService.getTags();
+
+    const queryParams = this.route.snapshot.queryParams;
+    this.id = queryParams["id"];
+    this.type = queryParams["type"];
+    console.log("type: ", this.type, " id: ", this.id);
+
+    if (this.type === "edit") {
+      this.populate();
+    }
   }
 
-  submit() {
-    this.inProgress = true;
+  populate() {
+    this.dbService.getPostByID(this.id).subscribe((res: IPost[]) => {
+      console.log(res);
+      if (res.length > 0) {
+        const post: IPost = res[0];
+        this.forms.patchValue({
+          title: post.title,
+          subtitle: post.subtitle,
+          body: post.body,
+          tag: post.tag_id,
+        });
+      }
+    });
+  }
+
+  addPost() {
     this.dbService
       .addPost({
         title: this.forms.get("title").value,
@@ -69,6 +92,39 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
           this.router.navigate(["/admin/posts"]);
         },
       });
+  }
+
+  updatePost() {
+    this.dbService
+      .updatePost(this.id, {
+        title: this.forms.get("title").value,
+        subtitle: this.forms.get("subtitle").value,
+        body: this.forms.get("body").value,
+        tag_id: this.forms.get("tag").value,
+        date_created: this.datePipe.transform(new Date(), "yyyy-MM-dd"),
+        image: "assets/images/blog-entry.jpg",
+      })
+      .pipe(
+        takeUntil(this.destroy$),
+        finalize(() => {
+          console.log("finalize");
+          this.inProgress = false;
+        })
+      )
+      .subscribe({
+        error: () => {
+          console.log("fail");
+        },
+        next: () => {
+          console.log("success");
+          this.router.navigate(["/admin/posts"]);
+        },
+      });
+  }
+
+  submit() {
+    this.inProgress = true;
+    this.type === "add" ? this.addPost() : this.updatePost();
   }
 
   reset() {

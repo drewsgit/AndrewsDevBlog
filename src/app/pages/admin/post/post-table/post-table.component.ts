@@ -10,7 +10,7 @@ import { finalize, Observable, Subject, takeUntil } from "rxjs";
 import { TableModule } from "primeng/table";
 import { CommonModule } from "@angular/common";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { DeletePostConfirmComponent } from "./delete-post-confirm/delete-post-confirm.component";
 
@@ -25,6 +25,7 @@ import { DeletePostConfirmComponent } from "./delete-post-confirm/delete-post-co
 export class PostTableComponent implements OnInit, OnDestroy {
   dbService = inject(DbService);
   modalService = inject(NgbModal);
+  router = inject(Router);
 
   destroy$: Subject<boolean> = new Subject<boolean>();
   posts$: IPost[] = [];
@@ -82,6 +83,12 @@ export class PostTableComponent implements OnInit, OnDestroy {
           this.posts$ = res;
         },
       });
+  }
+
+  editPost(post: IPost) {
+    this.router.navigate(["/admin/add-edit-post"], {
+      queryParams: { type: "edit", id: post.id },
+    });
   }
 
   ngOnDestroy(): void {

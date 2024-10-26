@@ -2,10 +2,6 @@ import { CommonModule } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 
-import { FooterComponent } from "../../components/footer/footer/footer.component";
-import { ScrollToTopComponent } from "../../components/scroll-to-top/scroll-to-top.component";
-import { NavbarComponent } from "../../components/navbar/navbar/navbar.component";
-
 import { DbService, IPost } from "../../data/db.service";
 
 @Component({
@@ -18,10 +14,11 @@ import { DbService, IPost } from "../../data/db.service";
 export class BlogDetailComponent {
   dbService = inject(DbService);
 
-  constructor(private router: ActivatedRoute) {}
-
   id: any;
   data: any;
+
+  constructor(private router: ActivatedRoute) {}
+
   ngOnInit(): void {
     this.id = this.router.snapshot.params["id"];
 

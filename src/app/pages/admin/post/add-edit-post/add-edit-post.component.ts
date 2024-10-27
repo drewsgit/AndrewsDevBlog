@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { DbService, IPost, ITag } from "../../../../data/db.service";
 import { finalize, Observable, Subject, takeUntil } from "rxjs";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { CalendarModule } from "primeng/calendar";
 
 @Component({
   selector: "app-add-edit-post",
@@ -14,6 +15,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     ReactiveFormsModule,
     CommonModule,
     MatProgressSpinnerModule,
+    CalendarModule,
   ],
   templateUrl: "./add-edit-post.component.html",
   styleUrl: "./add-edit-post.component.scss",
@@ -125,6 +127,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
 
   submit() {
     this.inProgress = true;
+    // console.log(this.forms.value);
     this.type === "add" ? this.addPost() : this.updatePost();
   }
 

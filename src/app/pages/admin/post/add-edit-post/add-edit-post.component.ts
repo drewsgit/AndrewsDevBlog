@@ -36,6 +36,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
     subtitle: [""],
     body: [""],
     tag: [1],
+    datePosted: [""],
   });
 
   ngOnInit(): void {

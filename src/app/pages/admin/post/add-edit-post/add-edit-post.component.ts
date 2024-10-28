@@ -51,6 +51,9 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
 
     if (this.type === "edit") {
       this.populate();
+    } else {
+      const defaultDatePosted: any = new Date();
+      this.forms.get("datePosted").setValue(defaultDatePosted);
     }
   }
 
@@ -59,15 +62,20 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
       console.log(res);
       if (res.length > 0) {
         const post: IPost = res[0];
+        const datePosted: any = new Date(post.date_posted); // p-calendar requires a date object
+
         this.forms.patchValue({
           title: post.title,
           subtitle: post.subtitle,
           body: post.body,
           tag: post.tag_id,
+          datePosted: datePosted,
         });
       }
     });
   }
+
+  // datePosted: post.date_posted,
 
   addPost() {
     this.dbService
@@ -78,6 +86,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
         tag_id: this.forms.get("tag").value,
         date_created: this.datePipe.transform(new Date(), "yyyy-MM-dd"),
         image: "assets/images/blog-entry.jpg",
+        date_posted: this.forms.get("datePosted").value,
       })
       .pipe(
         takeUntil(this.destroy$),
@@ -106,6 +115,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
         tag_id: this.forms.get("tag").value,
         date_created: this.datePipe.transform(new Date(), "yyyy-MM-dd"),
         image: "assets/images/blog-entry.jpg",
+        date_posted: this.forms.get("datePosted").value,
       })
       .pipe(
         takeUntil(this.destroy$),

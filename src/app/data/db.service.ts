@@ -22,6 +22,7 @@ export interface IPost {
   tag_id: number;
   date_created: string;
   image: string;
+  date_posted: string;
 }
 
 export interface ITag {

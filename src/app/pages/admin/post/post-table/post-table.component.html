@@ -38,7 +38,8 @@
               <th>Body</th>
               <th>Tag</th>
               <th>Img Path</th>
-              <th>Date created</th>
+              <th>Date Posted</th>
+              <th>Date Created</th>
               <th></th>
             </tr>
           </ng-template>
@@ -50,6 +51,7 @@
               <td>{{ post.body }}</td>
               <td>{{ post.tag }}</td>
               <td>{{ post.image }}</td>
+              <td>{{ post.date_posted | date : "shortDate" }}</td>
               <td>{{ post.date_created | date : "shortDate" }}</td>
               <td style="display: inline">
                 <button

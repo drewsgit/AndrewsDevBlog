@@ -4,6 +4,14 @@ import { RouterLink, RouterOutlet } from "@angular/router";
 import { DbService, IPost } from "../../data/db.service";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { PaginatorModule, PaginatorState } from "primeng/paginator";
+
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
+}
 
 @Component({
   selector: "app-index",
@@ -13,12 +21,15 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     RouterLink,
     ProgressSpinnerModule,
     MatProgressSpinnerModule,
+    PaginatorModule,
   ],
   templateUrl: "./index.component.html",
   styleUrl: "./index.component.scss",
 })
 export class IndexComponent implements OnInit {
   blogData: IPost[] = [];
+  first: number = 0;
+  rows: number = 10;
 
   constructor(private dbService: DbService) {}
 
@@ -27,5 +38,10 @@ export class IndexComponent implements OnInit {
       console.log(res);
       this.blogData = res;
     });
+  }
+
+  onPageChange(event: PaginatorState) {
+    this.first = event.first;
+    this.rows = event.rows;
   }
 }

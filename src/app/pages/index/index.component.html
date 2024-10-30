@@ -102,6 +102,16 @@
         </div>
 
         <!-- Start Pagination -->
+        <div class="card flex justify-content-center">
+          <p-paginator
+            (onPageChange)="onPageChange($event)"
+            [first]="first"
+            [rows]="rows"
+            [totalRecords]="120"
+            [rowsPerPageOptions]="[10, 20, 30]"
+          />
+        </div>
+
         <!-- <div class="row">
                     <div class="col-12 mt-4 pt-2">
                         <ul class="pagination justify-content-center mb-0">

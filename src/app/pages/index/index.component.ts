@@ -5,6 +5,7 @@ import { DbService, IPost } from "../../data/db.service";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { PaginatorModule, PaginatorState } from "primeng/paginator";
+import { forkJoin } from "rxjs";
 
 interface PageEvent {
   first: number;
@@ -27,21 +28,38 @@ interface PageEvent {
   styleUrl: "./index.component.scss",
 })
 export class IndexComponent implements OnInit {
-  blogData: IPost[] = [];
-  first: number = 0;
-  rows: number = 10;
+  posts: IPost[] = [];
+  recentPosts: IPost[] = [];
+  first: number = 0;  // Count of first record in page
+  rowsPerPage: number = 5;  // Number of records per page
+  totalRecords: number = 0; // Total number of records
 
   constructor(private dbService: DbService) {}
 
   ngOnInit(): void {
-    this.dbService.getPosts().subscribe((res: IPost[]) => {
-      console.log(res);
-      this.blogData = res;
-    });
+    this.getData();    
+  }
+
+  getData() {
+    forkJoin({
+      posts$: this.dbService.getPostsWithPaging(this.rowsPerPage, this.first), 
+      count$: this.dbService.getPostsCount()
+    })
+    .subscribe((res) => {
+      // console.log('post data:', res.posts$);
+      // console.log('count data:', res.count$);
+      this.posts = res.posts$;
+      this.totalRecords = res.count$;
+
+      // Only set recent posts for first page
+      if (this.first === 0)
+        this.recentPosts = this.posts;
+     });
   }
 
   onPageChange(event: PaginatorState) {
     this.first = event.first;
-    this.rows = event.rows;
+    this.rowsPerPage = event.rows;
+    this.getData();
   }
 }

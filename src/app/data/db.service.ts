@@ -45,6 +45,14 @@ export class DbService {
     return this.http.get<IPost[]>(`${this.baseURL}/posts`);
   }
 
+  getPostsWithPaging(limit: number, offset: number): Observable<IPost[]> {
+    return this.http.get<IPost[]>(`${this.baseURL}/posts/paging/${limit}/${offset}`);
+  }
+
+  getPostsCount(): Observable<number> {
+    return this.http.get<number>(`${this.baseURL}/posts/count`);
+  }
+
   getPostByID(id: number): Observable<IPost[]> {
     return this.http.get<IPost[]>(`${this.baseURL}/posts/${id}`);
   }

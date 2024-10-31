@@ -74,5 +74,14 @@
         </p-table>
       </div>
     </div>
+    <div class="row align-items-center">
+      <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [first]="first"
+        [rows]="rowsPerPage"
+        [totalRecords]="totalRecords"
+      />
+      <div class="col-12"></div>
+    </div>
   </div>
 </section>

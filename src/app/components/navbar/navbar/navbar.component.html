@@ -33,12 +33,19 @@
     </div>
 
     <ul class="navigation-menu login-button list-inline mb-0">
+      @if (isLoggedIn && user) {
+      <li class="list-inline-item mb-0 username">
+        {{ user.name }}
+        <button class="btn btn-link btn-sm" (click)="logout()">Logout</button>
+      </li>
+      } @else {
       <li
         class="list-inline-item mb-0"
         [ngClass]="current === '/login' ? 'active' : ''"
       >
         <a [routerLink]="'/login'" class="sub-menu-item">Login</a>
       </li>
+      }
 
       <!-- <li class="list-inline-item ms-2">
         <a [routerLink]="'/author'"

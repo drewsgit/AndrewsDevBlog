@@ -41,7 +41,8 @@
               "src/assets/scss/style.scss",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/assets/css/materialdesignicons.min.css"
             ],
             "scripts": []
           },

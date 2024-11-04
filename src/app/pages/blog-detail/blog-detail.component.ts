@@ -1,7 +1,6 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute, RouterLink } from "@angular/router";
-
 import { DbService, IPost } from "../../data/db.service";
 
 @Component({
@@ -17,7 +16,7 @@ export class BlogDetailComponent {
   id: any;
   data: any;
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(private router: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {
     this.id = this.router.snapshot.params["id"];
@@ -28,5 +27,9 @@ export class BlogDetailComponent {
         this.data = res[0];
       }
     });
+  }
+
+  goPreviousPage() {
+    this.location.back();
   }
 }

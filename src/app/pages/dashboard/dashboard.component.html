@@ -91,6 +91,7 @@
                   <a
                     [routerLink]="['/blog-detail', item.id]"
                     class="read-more d-block"
+                    *ngIf="item.body?.length > 0"
                     >Read More <i class="uil uil-arrow-right align-middle"></i
                   ></a>
                 </div>
@@ -111,7 +112,6 @@
             [totalRecords]="totalRecords"
           />
         </div>
-        
       </div>
     </div>
   </div>

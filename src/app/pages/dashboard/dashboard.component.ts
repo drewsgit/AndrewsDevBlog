@@ -17,10 +17,10 @@ import { catchError, forkJoin, Subject, takeUntil } from "rxjs";
     MatProgressSpinnerModule,
     PaginatorModule,
   ],
-  templateUrl: "./index.component.html",
-  styleUrl: "./index.component.scss",
+  templateUrl: "./dashboard.component.html",
+  styleUrl: "./dashboard.component.scss",
 })
-export class IndexComponent implements OnInit, OnDestroy {
+export class DasbhoardComponent implements OnInit, OnDestroy {
   posts: IPost[] = [];
   recentPosts: IPost[] = [];
   first: number = 0; // Count of first record in page

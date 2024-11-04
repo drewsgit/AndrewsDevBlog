@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { IndexComponent } from "./pages/index/index.component";
+import { DasbhoardComponent } from "./pages/dashboard/dashboard.component";
 import { AboutMeComponent } from "./pages/about-me/about-me.component";
 import { ContactComponent } from "./pages/contact/contact.component";
 import { BlogDetailComponent } from "./pages/blog-detail/blog-detail.component";
@@ -67,12 +67,12 @@ export const routes: Routes = [
   {
     path: "",
     component: ExternalLayoutComponent,
-    children: [{ path: "", component: IndexComponent }],
+    children: [{ path: "", component: DasbhoardComponent }],
   },
   {
     path: "**",
     component: ExternalLayoutComponent,
-    children: [{ path: "", component: IndexComponent }],
+    children: [{ path: "", component: DasbhoardComponent }],
   },
   { path: "contact", component: ContactComponent },
   { path: "demo/control-flow", component: ControlFlowComponent },

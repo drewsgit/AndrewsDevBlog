@@ -5,80 +5,50 @@
   [ngClass]="bg ? 'bg-white' : '' || scroll ? 'nav-sticky' : ''"
 >
   <div class="container">
-    <!-- Logo container-->
+    <!-- Logo Title -->
     <a class="logo" href="/">
       <!-- <img [src]="'assets/images/logo.png'" height="22" class="big-logo" alt="">
             <img [src]="'assets/images/logo-icon.png'" height="28" class="small-logo" alt=""> -->
       <!-- REPLACE with my own logo-->
       <span class="title">Andrew's Dev Blog</span>
     </a>
-    <!-- End Logo container-->
-    <div class="menu-extras">
-      <div class="menu-item">
-        <!-- Mobile menu toggle-->
-        <a
-          class="navbar-toggle"
-          [ngClass]="open ? 'open' : ''"
-          id="isToggle"
-          (click)="toggleMenu($event)"
-        >
-          <div class="lines">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </a>
-        <!-- End mobile menu toggle-->
-      </div>
-    </div>
 
-    <ul class="navigation-menu login-button list-inline mb-0">
-      @if (isLoggedIn && user) {
-      <li class="list-inline-item mb-0 username">
-        {{ user.name }}
-        <button class="btn btn-link btn-sm" (click)="logout()">Logout</button>
-      </li>
-      } @else {
-      <li
-        class="list-inline-item mb-0"
-        [ngClass]="current === '/login' ? 'active' : ''"
+    <div id="navigation">
+      <p-menubar
+        [model]="menuItems"
+        [style]="{
+          border: 'none',
+          'background-color': '#fff',
+        }"
       >
-        <a [routerLink]="'/login'" class="sub-menu-item">Login</a>
-      </li>
-      }
-
-      <!-- <li class="list-inline-item ms-2">
-        <a [routerLink]="'/author'"
-          ><img
-            [src]="'assets/images/users/user-3.jpg'"
-            class="rounded-pill avatar avatar-sm-sm"
-            alt=""
-        /></a>
-      </li> -->
-    </ul>
-
-    <div id="navigation" [ngClass]="open ? 'd-block' : 'd-none'">
-      <!-- Navigation Menu-->
-      <ul class="navigation-menu nav-left">
-        <li [ngClass]="current === '/' ? 'active' : ''">
-          <a [routerLink]="'/'" class="sub-menu-item">Home</a>
-        </li>
-
-        <li [ngClass]="current === '/about-me' ? 'active' : ''">
-          <a [routerLink]="'/about-me'" class="sub-menu-item">About Me</a>
-        </li>
-
-        <li [ngClass]="current === '/admin/posts' ? 'active' : ''">
-          <a [routerLink]="'/admin/posts'" class="sub-menu-item">Admin</a>
-        </li>
-
-        <!-- <li [ngClass]="current === '/business-contact' ? 'active' : ''"><a [routerLink]="'/business-contact'"
-                        class="sub-menu-item">Contact Me</a></li> -->
-      </ul>
-      <!--end navigation menu-->
+        <!-- Routerlink exists template -->
+        <ng-template pTemplate="item" let-item>
+          <ng-container *ngIf="item.route; else urlRef">
+            <a [routerLink]="item.route" class="p-menuitem-link">
+              <span [class]="item.icon"></span>
+              <span class="ml-2">{{ item.label }}</span>
+            </a>
+          </ng-container>
+          <!-- External url exists template -->
+          <ng-template #urlRef>
+            <a
+              *ngIf="item.url; else noLink"
+              [href]="item.url"
+              class="p-menuitem-link"
+            >
+              <span [class]="item.icon"></span>
+              <span class="ml-2">{{ item.label }}</span>
+            </a>
+          </ng-template>
+          <!-- No link exists template -->
+          <ng-template #noLink>
+            <div class="p-menuitem-link">
+              <span [class]="item.icon"></span>
+              <span class="ml-2">{{ item.label }}</span>
+            </div>
+          </ng-template>
+        </ng-template>
+      </p-menubar>
     </div>
-    <!--end navigation-->
   </div>
 </header>
-<!--end header-->
-<!-- Navbar End -->

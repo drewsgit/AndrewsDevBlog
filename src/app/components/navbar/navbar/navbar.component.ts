@@ -5,16 +5,18 @@ import {
   Input,
   input,
   signal,
+  ViewEncapsulation,
   WritableSignal,
 } from "@angular/core";
 import { Router, RouterLink } from "@angular/router";
-import { IUser } from "../../../data/db.service";
 import { SessionManagerService } from "../../../data/session-manager.service";
+import { MenubarModule } from "primeng/menubar";
+import { MenuItem } from "primeng/api";
 
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MenubarModule],
   templateUrl: "./navbar.component.html",
   styleUrl: "./navbar.component.scss",
 })
@@ -24,6 +26,7 @@ export class NavbarComponent {
   scroll: boolean = false;
   user = this.sessionManager.user();
   isLoggedIn = this.sessionManager.isLoggedIn;
+  menuItems: MenuItem[] | undefined;
 
   @HostListener("window:scroll", [])
   scrollHandler() {
@@ -41,12 +44,46 @@ export class NavbarComponent {
     window.scroll(0, 0);
     this.current = this.router.url;
     console.log("this.current: ", this.current);
-  }
 
-  open: boolean = false;
+    this.menuItems = [
+      {
+        label: "Home",
+        route: "/",
+      },
+      {
+        label: "About Me",
+        route: "/about-me",
+      },
+      {
+        label: "Admin",
+        items: [
+          {
+            label: "Posts",
+            route: "/admin/posts",
+          },
+        ],
+      },
+    ];
 
-  toggleMenu(e: any) {
-    this.open = !this.open;
+    // If logged in, show logged in user with log out link.  Otherwise, show Login link.
+    if (this.sessionManager.isLoggedIn && this.user) {
+      this.menuItems.push({
+        label: this.user.name,
+        style: { "margin-left": "auto" },
+        items: [
+          {
+            label: "Logout",
+            command: () => this.logout(),
+          },
+        ],
+      });
+    } else {
+      this.menuItems.push({
+        label: "Login",
+        route: "/login",
+        style: { "margin-left": "auto" },
+      });
+    }
   }
 
   logout() {

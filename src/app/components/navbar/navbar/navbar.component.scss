@@ -1,3 +1,12 @@
 .username {
     margin-top: 30px !important;
 }
+
+:host ::ng-deep p-menubarsub {
+    width: 100%;
+}
+
+// Override blue link in menu bar 
+.p-menuitem-link  {
+    color: #4b5563;
+}

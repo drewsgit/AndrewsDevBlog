@@ -24,7 +24,7 @@ export class NavbarComponent {
   @Input() bg: any;
 
   scroll: boolean = false;
-  user = this.sessionManager.user();
+  user = this.sessionManager.getUser();
   isLoggedIn = this.sessionManager.isLoggedIn;
   menuItems: MenuItem[] | undefined;
 

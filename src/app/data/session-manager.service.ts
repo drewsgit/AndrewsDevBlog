@@ -5,8 +5,9 @@ import { IUser } from "./db.service";
   providedIn: "root",
 })
 export class SessionManagerService {
-  private readonly IS_LOGGEDIN_KEY = "ISLOGGEDIN";
-  user: WritableSignal<IUser> = signal<IUser>(null);
+  private readonly IS_LOGGEDIN_KEY = "IS_LOGGED_IN";
+  private readonly USER_KEY = "USER_KEY";
+  // private _user: WritableSignal<IUser> = signal<IUser>(null);
 
   constructor() {}
 
@@ -20,14 +21,14 @@ export class SessionManagerService {
 
   public logout() {
     sessionStorage.removeItem(this.IS_LOGGEDIN_KEY);
-    this.user.set(null);
+    sessionStorage.removeItem(this.USER_KEY);
   }
 
-  // public getUser(): IUser {
-  //   return this._user();
-  // }
+  public getUser(): IUser {
+    return JSON.parse(sessionStorage.getItem(this.USER_KEY)) as IUser;
+  }
 
-  // public setUser(v: IUser) {
-  //   this._user.set(v);
-  // }
+  public setUser(v: IUser) {
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(v));
+  }
 }

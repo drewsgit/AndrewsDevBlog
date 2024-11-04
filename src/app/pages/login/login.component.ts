@@ -52,7 +52,7 @@ export class LoginComponent implements OnDestroy {
         next: (res: any) => {
           console.log("success");
           this.sessionManagerService.isLoggedIn = true;
-          this.sessionManagerService.user.set(res.user);
+          this.sessionManagerService.setUser(res.user);
           this.router.navigate(["/"]);
         },
       });

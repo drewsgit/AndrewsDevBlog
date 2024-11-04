@@ -72,7 +72,7 @@ export class NavbarComponent {
         style: { "margin-left": "auto" },
         items: [
           {
-            label: "Logout",
+            label: "Sign Out",
             command: () => this.logout(),
           },
         ],
